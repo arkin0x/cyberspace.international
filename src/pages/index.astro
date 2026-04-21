@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/DocsLayout.astro';
 
+const pageTitle = "Cyberspace Protocol";
+const pageDescription = "Digital space with real locality enforced by thermodynamics. Decentralized spatial protocol on Nostr.";
+const pageCanonical = "/";
+
 const heroContent = {
   headline: "Bitcoin captured time. Cyberspace captures space.",
   subhead: "A decentralized cryptographic protocol that imposes locality on digital systems. No blockchain, no trusted servers. Create locality with pure mathematics via Cantor pairing trees and proof-of-work.",
@@ -61,7 +65,7 @@ const heroContent = {
 };
 ---
 
-<Layout title="Cyberspace Protocol" description="Digital space with real locality" canonical="/">
+<Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>
   
   <!-- Hero Section -->
   <section class="py-20 border-b border-slate-800">
@@ -74,7 +78,7 @@ const heroContent = {
       </p>
       
       <div class="flex flex-wrap gap-4">
-        <a href="/docs/getting-started.html" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold hover:opacity-90 transition-opacity text-lg">
+        <a href="/docs/getting-started" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold hover:opacity-90 transition-opacity text-lg">
           Start Exploring
         </a>
         <a href="https://github.com/arkin0x/cyberspace" class="px-8 py-4 border border-slate-600 rounded-lg hover:border-cyan-400 transition-colors text-lg">
@@ -251,10 +255,10 @@ $ cyberspace decrypt --event 0x8f2a1b...e9c4
         Cyberspace has layers. Explore at your own pace. Start with the basics, then dive deep into the mathematical foundations.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/docs/getting-started.html" class="px-8 py-4 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-lg hover:bg-cyan-500/30 transition-colors">
+        <a href="/docs/getting-started" class="px-8 py-4 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-lg hover:bg-cyan-500/30 transition-colors">
           Beginner's Guide
         </a>
-        <a href="/docs/coordinates.html" class="px-8 py-4 bg-purple-500/20 text-purple-400 border border-purple-500/50 rounded-lg hover:bg-purple-500/30 transition-colors">
+        <a href="/docs/coordinates" class="px-8 py-4 bg-purple-500/20 text-purple-400 border border-purple-500/50 rounded-lg hover:bg-purple-500/30 transition-colors">
           Coordinate System
         </a>
         <a href="https://github.com/arkin0x/cyberspace/blob/main/CYBERSPACE_V2.md" class="px-8 py-4 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:border-slate-500 transition-colors">
