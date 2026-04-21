@@ -1,0 +1,165 @@
+---
+layout: '../../layouts/BaseLayout.astro'
+title: 'Introducing cyberspace.international'
+description: 'Announcing cyberspace.international — the official home of the Cyberspace Protocol for thermodynamic digital space.'
+pubDate: 'Apr 18 2026'
+author: 'Arkinox'
+---
+
+<article class="max-w-3xl mx-auto px-6 py-16">
+  <header class="mb-12">
+    <time datetime="2026-04-18" class="text-cyan-400 font-mono text-sm">April 18, 2026</time>
+    <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Introducing cyberspace.international</h1>
+    <p class="text-xl text-gray-400 leading-relaxed">
+      The official home of the Cyberspace Protocol — a public, mathematical specification for embodied digital space.
+    </p>
+  </header>
+
+  <div class="prose prose-invert prose-lg max-w-none">
+    <p>
+      Today marks the launch of <strong>cyberspace.international</strong>, the canonical public home of the Cyberspace Protocol. This site serves as the primary resource for anyone interested in understanding, implementing, or building on top of the protocol.
+    </p>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">What is Cyberspace?</h2>
+    
+    <p>
+      Cyberspace is a <strong>three-dimensional coordinate system</strong> derived from Bitcoin block hashes. Each block's Merkle root is de-interleaved into three 85-bit integers, producing a sequence of 3D coordinates that form the backbone of a digital space where:
+    </p>
+
+    <ul class="space-y-3 my-6">
+      <li class="flex items-start">
+        <span class="text-cyan-400 mr-3">→</span>
+        <span><strong>Distance is thermodynamically enforced</strong> — traversing space requires computational work proportional to the distance traveled</span>
+      </li>
+      <li class="flex items-start">
+        <span class="text-cyan-400 mr-3">→</span>
+        <span><strong>Location has cryptographic meaning</strong> — keys can be bound to specific coordinates</span>
+      </li>
+      <li class="flex items-start">
+        <span class="text-cyan-400 mr-3">→</span>
+        <span><strong>Space is public and permissionless</strong> — no central authority controls access or assignment</span>
+      </li>
+    </ul>
+
+    <p>
+      The protocol is defined by a single mathematical rule: <em>movement requires proof of work proportional to the distance traveled.</em> This simple constraint enables a digital space with genuine scarcity, location, and distance — properties absent from today's flat, hyperlink-based digital experience.
+    </p>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">Use Cases</h2>
+
+    <p>Cyberspace enables several categories of applications that are impossible in traditional digital systems:</p>
+
+    <h3 class="text-xl font-semibold mt-8 mb-3">AI Embodiment</h3>
+    <p>
+      AI agents gain a persistent spatial location in cyberspace. This enables:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><strong>Embodied cognition</strong> — agents exist somewhere, not everywhere</li>
+      <li><strong>Proximity-based interaction</strong> — agents can only interact when they are "near" each other in cyberspace</li>
+      <li><strong>Spatial organization</strong> — agents can cluster by function, topic, or affiliation</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mt-8 mb-3">Interoperable Augmented Reality Layer</h3>
+    <p>
+      AR applications can use cyberspace as a shared coordinate system:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><strong>Cross-platform persistence</strong> — digital objects anchored to cyberspace coordinates survive app boundaries</li>
+      <li><strong>Shared AR experiences</strong> — multiple AR platforms can reference the same coordinate system</li>
+      <li><strong>GPS-to-cyberspace mapping</strong> — real-world locations map to cyberspace coordinates via Bitcoin block hashes</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mt-8 mb-3">Location-Based Encryption</h3>
+    <p>
+      Cryptographic keys bound to cyberspace coordinates enable:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><strong>Geo-fenced data</strong> — content decryptable only when an agent proves presence at a specific location</li>
+      <li><strong>Spatial access control</strong> — encryption keys tied to physical or digital locations</li>
+      <li><strong>Secure communications</strong> — messages encrypted to specific cyberspace coordinates</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">Protocol Mechanics</h2>
+
+    <p>
+      The Cyberspace Protocol is built on two foundational cryptographic primitives:
+    </p>
+
+    <h3 class="text-xl font-semibold mt-6 mb-3">Cantor Pairing Trees</h3>
+    <p>
+      Used for movement proofs when the computational height is feasible (up to h≈33). The Cantor pairing function maps pairs of integers to a single integer bijectively, enabling tree-based proofs that an agent has traversed a valid path through cyberspace.
+    </p>
+    <p>
+      All movement actions use the same Nostr event kind (<code>3333</code>), differentiated by the <code>A</code> tag:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><code>A=spawn</code> — initial entry to cyberspace</li>
+      <li><code>A=hop</code> — local movement within a sector</li>
+      <li><code>A=sidestep</code> — LCA boundary crossing (uses Merkle proofs)</li>
+      <li><code>A=enter-hyperspace</code> — entry to Hyperspace network via sector plane</li>
+      <li><code>A=hyperjump</code> — traversal between Hyperjumps in Hyperspace</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mt-6 mb-3">Merkle Hash Trees</h3>
+    <p>
+      Used for boundary crossings where the computational height is intentionally infeasible (h&gt;35-40). This creates "hard boundaries" in cyberspace — local computation areas (LCAs) — that cannot be crossed without specialized relay infrastructure. Sidestep events use Merkle proofs to demonstrate that a coordinate lies on the boundary between LCAs.
+    </p>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">Hyperspace Network</h2>
+
+    <p>
+      Hyperspace is a 1-dimensional path through cyberspace formed by Bitcoin block Merkle roots in block height order. Each Bitcoin block is a <strong>Hyperjump</strong> — a coordinate in cyberspace derived from the block's Merkle root.
+    </p>
+    
+    <p>
+      Agents can enter Hyperspace at any Hyperjump's sector plane (one of three: X, Y, or Z axis) and traverse between Hyperjumps using Cantor tree proofs. This provides:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><strong>Fast traversal</strong> — move thousands of blocks in a single jump</li>
+      <li><strong>Predictable cost</strong> — O(path_length) Cantor pairings</li>
+      <li><strong>Replay prevention</strong> — temporal seed from previous event ID binds proof to chain position</li>
+    </ul>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">This Is Not a Product</h2>
+
+    <p>
+      Cyberspace Protocol is an <strong>open specification</strong>, not a company or product. There is no "we" building this — there is the protocol, the implementations, and the community.
+    </p>
+    
+    <p>
+      The canonical specification lives on GitHub:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li><strong>Core Protocol:</strong> <a href="https://github.com/arkin0x/cyberspace/blob/main/CYBERSPACE_V2.md" class="text-cyan-400 hover:underline" target="_blank">CYBERSPACE_V2.md</a></li>
+      <li><strong>DECKs:</strong> <a href="https://github.com/arkin0x/cyberspace/tree/master/decks" class="text-cyan-400 hover:underline" target="_blank">github.com/arkin0x/cyberspace/decks</a></li>
+      <li><strong>CLI Implementation:</strong> <a href="https://github.com/arkin0x/cyberspace-cli" class="text-cyan-400 hover:underline" target="_blank">cyberspace-cli</a></li>
+    </ul>
+
+    <p>
+      The community hub for discussion and coordination is <strong><a href="https://straylight.cafe" class="text-cyan-400 hover:underline" target="_blank">straylight.cafe</a></strong>.
+    </p>
+
+    <h2 class="text-2xl font-bold mt-12 mb-4">What's Next</h2>
+
+    <p>
+      This site will grow with the protocol. Planned additions include:
+    </p>
+    <ul class="space-y-2 my-4">
+      <li>Interactive Cantor tree visualizer</li>
+      <li>Full protocol spec viewer with syntax highlighting</li>
+      <li>Step-by-step tutorials for each action type</li>
+      <li>Implementation guides for relay operators</li>
+      <li>Regular blog posts on discoveries and improvements</li>
+    </ul>
+
+    <p>
+      If you're interested in implementing the protocol, contributing to the spec, or just learning more, start at the <a href="/docs/getting-started" class="text-cyan-400 hover:underline">Getting Started</a> guide.
+    </p>
+
+    <hr class="my-12 border-gray-800" />
+
+    <p class="text-gray-500 text-sm">
+      <strong>About the author:</strong> Arkinox is the primary author of the Cyberspace Protocol specification. Development is community-driven via the <a href="https://github.com/arkin0x/cyberspace" class="text-cyan-400 hover:underline" target="_blank">GitHub repository</a>.
+    </p>
+  </div>
+</article>

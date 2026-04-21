@@ -1,0 +1,284 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Getting Started with Cyberspace" description="Your first steps into the 256-bit coordinate system">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Getting Started with Cyberspace
+    </h1>
+    
+    <p class="text-lg text-slate-300 mb-8">
+      Welcome to Cyberspace. This guide will help you understand the basics and take your 
+      first steps into the 256-bit coordinate system. No prior knowledge of cryptography 
+      or distributed systems required.
+    </p>
+
+    <!-- What You Need -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">What You Need</h2>
+      
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Prerequisites</h3>
+        <ul class="space-y-3 text-slate-300">
+          <li class="flex items-start">
+            <span class="text-cyan-400 mr-3 mt-1">▸</span>
+            <span><strong>A Nostr keypair</strong> - This is your identity in Cyberspace. Your public key determines where you spawn.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-cyan-400 mr-3 mt-1">▸</span>
+            <span><strong>The cyberspace-cli</strong> - Python reference implementation for computing movement proofs</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-cyan-400 mr-3 mt-1">▸</span>
+            <span><strong>Access to Nostr relays</strong> - Where movement events are published and verified</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-cyan-400">Key Concept: Identity Is Location</h3>
+        <p class="text-slate-300">
+          In Cyberspace, your cryptographic identity <em>is</em> your location. Your Nostr 
+          public key (a 256-bit number) is interpreted as a coordinate using the protocol's 
+          interleaving scheme. When you first enter Cyberspace, you appear at the coordinate 
+          encoded by your identity. This is not metaphorical—it is a direct mathematical mapping.
+        </p>
+      </div>
+    </section>
+
+    <!-- Your First Steps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Your First Steps</h2>
+      
+      <div class="space-y-6">
+        <div class="flex gap-6 p-6 bg-slate-900/30 rounded-xl border border-slate-800">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xl">
+            1
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">Understand the Coordinate System</h3>
+            <p class="text-slate-400 mb-3 leading-relaxed">
+              Cyberspace uses a 256-bit coordinate system with three spatial axes (X, Y, Z) 
+              and a plane bit (P). Each axis is 85 bits, and they are interleaved at the 
+              bit level.
+            </p>
+            <p class="text-slate-500 text-sm italic border-l-2 border-cyan-500/30 pl-4">
+              Start with the <a href="/docs/coordinates.html" class="text-cyan-400 hover:text-cyan-300">Coordinate System</a> documentation to learn about Gibsons, sectors, and the two planes (dataspace and ideaspace).
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 bg-slate-900/30 rounded-xl border border-slate-800">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xl">
+            2
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">Learn How Movement Works</h3>
+            <p class="text-slate-400 mb-3 leading-relaxed">
+              Moving between coordinates requires computing a Cantor pairing tree proof. 
+              The computational cost scales with the distance crossed—nearby coordinates 
+              are cheap to reach, distant ones are expensive.
+            </p>
+            <p class="text-slate-500 text-sm italic border-l-2 border-cyan-500/30 pl-4">
+              Read <a href="/docs/cantor.html" class="text-cyan-400 hover:text-cyan-300">Cantor Pairing</a> and <a href="/docs/proof-of-work.html" class="text-cyan-400 hover:text-cyan-300">Proof-of-Work Mechanics</a> to understand the mathematics.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 bg-slate-900/30 rounded-xl border border-slate-800">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xl">
+            3
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">Explore the Topography</h3>
+            <p class="text-slate-400 mb-3 leading-relaxed">
+              Cyberspace has natural terrain: LCA boundaries create cost cliffs, sectors 
+              form geographic regions, and the temporal axis ensures every hop costs 
+              fresh work.
+            </p>
+            <p class="text-slate-500 text-sm italic border-l-2 border-cyan-500/30 pl-4">
+              The <a href="/docs/topography.html" class="text-cyan-400 hover:text-cyan-300">Topography</a> guide explains the landscape you'll be navigating.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 bg-slate-900/30 rounded-xl border border-slate-800">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xl">
+            4
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">Discover Hyperspace</h3>
+            <p class="text-slate-400 mb-3 leading-relaxed">
+              For long-distance travel, use the Hyperspace network formed by Bitcoin 
+              block Merkle roots. Entry costs about 15 minutes and $0.09; traversal 
+              is nearly instant.
+            </p>
+            <p class="text-slate-500 text-sm italic border-l-2 border-cyan-500/30 pl-4">
+              Learn about <a href="/docs/hyperspace.html" class="text-cyan-400 hover:text-cyan-300">Hyperspace and Hyperjumps</a> for efficient long-distance travel.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended Learning Path -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Recommended Learning Path</h2>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs/coordinates.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">1. Coordinate System</h3>
+          <p class="text-slate-400 text-sm">
+            The 256-bit interleaved structure, X/Y/Z axes, plane bit, Gibsons, and sectors.
+          </p>
+        </a>
+
+        <a href="/docs/cantor.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">2. Cantor Pairing</h3>
+          <p class="text-slate-400 text-sm">
+            The mathematical foundation of traversal proofs and tree construction.
+          </p>
+        </a>
+
+        <a href="/docs/topography.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">3. Topography</h3>
+          <p class="text-slate-400 text-sm">
+            LCA boundaries, temporal work axis, and sector structure.
+          </p>
+        </a>
+
+        <a href="/docs/proof-of-work.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">4. Proof-of-Work</h3>
+          <p class="text-slate-400 text-sm">
+            Hop, sidestep, and hyperspace traversal proofs.
+          </p>
+        </a>
+
+        <a href="/docs/sidestep.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">5. Sidestep</h3>
+          <p class="text-slate-400 text-sm">
+            Merkle proof mechanism for crossing infeasible LCA boundaries.
+          </p>
+        </a>
+
+        <a href="/docs/hyperspace.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">6. Hyperspace</h3>
+          <p class="text-slate-400 text-sm">
+            Bitcoin-backed teleport network for long-distance traversal.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Technical Resources -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Technical Resources</h2>
+      
+      <div class="space-y-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Protocol Specification</h3>
+          <p class="text-slate-400 text-sm mb-3">
+            The canonical CYBERSPACE_V2.md specification defines the coordinate system, 
+            movement primitives, and Nostr integration.
+          </p>
+          <a href="https://github.com/arkin0x/cyberspace/blob/master/CYBERSPACE_V2.md" class="text-cyan-400 hover:text-cyan-300 text-sm">
+            Read CYBERSPACE_V2.md →
+          </a>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Reference Implementation</h3>
+          <p class="text-slate-400 text-sm mb-3">
+            The cyberspace-cli is the Python reference implementation for computing 
+            movement proofs and interacting with the protocol.
+          </p>
+          <a href="https://github.com/arkin0x/cyberspace-cli" class="text-cyan-400 hover:text-cyan-300 text-sm">
+            View cyberspace-cli on GitHub →
+          </a>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">DECKs (Protocol Extensions)</h3>
+          <p class="text-slate-400 text-sm mb-3">
+            Design Extensions and Compatibility Kits define optional extensions like 
+            Hyperspace traversal.
+          </p>
+          <a href="https://github.com/arkin0x/cyberspace/tree/master/decks" class="text-cyan-400 hover:text-cyan-300 text-sm">
+            Browse DECKs on GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Questions -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Common Questions</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-slate-900/30 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-200 mb-3">How do I actually start moving?</h3>
+          <p class="text-slate-400 text-sm">
+            First, install the cyberspace-cli and generate a Nostr keypair (or use an existing one). 
+            Your spawn coordinate is determined by your public key. Publish a spawn event 
+            (kind 3333, A=spawn) to declare your presence, then compute hop proofs to move 
+            to nearby coordinates.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/30 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-200 mb-3">How much does movement cost?</h3>
+          <p class="text-slate-400 text-sm">
+            Within a sector (low LCA height), movement costs milliseconds to seconds on 
+            consumer hardware. Crossing sector boundaries requires either sidestepping 
+            (hours to days) or using Hyperspace (entry takes ~15 minutes and ~$0.09, 
+            traversal is nearly instant).
+          </p>
+        </div>
+
+        <div class="bg-slate-900/30 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-200 mb-3">Can I choose where I spawn?</h3>
+          <p class="text-slate-400 text-sm">
+            No—your spawn coordinate is determined by your public key. If you want a 
+            different spawn point, you need a different identity (keypair). This is a 
+            core property of the protocol: identity and location are mathematically 
+            inseparable.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/30 border border-slate-800 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-slate-200 mb-3">Is this like Bitcoin mining?</h3>
+          <p class="text-slate-400 text-sm">
+            Similar but different. Bitcoin uses arbitrary hash grinding—finding a nonce 
+            that produces a hash below a target. Cyberspace uses structured work—computing 
+            the Cantor tree that mathematically connects two coordinates. The proof is 
+            not "I burned energy" but "I computed the fabric between these points."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Ready to Dive Deeper?</h2>
+      
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-lg p-6">
+        <p class="text-slate-300 mb-6">
+          Now that you have the basics, explore the mathematical foundations and technical 
+          details that make Cyberspace possible.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/docs/coordinates.html" class="px-6 py-3 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-lg hover:bg-cyan-500/30 transition-colors">
+            Start with Coordinates
+          </a>
+          <a href="https://github.com/arkin0x/cyberspace-cli" class="px-6 py-3 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:border-slate-500 transition-colors">
+            Get the CLI Tools
+          </a>
+          <a href="https://github.com/arkin0x/cyberspace/blob/master/CYBERSPACE_V2.md" class="px-6 py-3 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:border-slate-500 transition-colors">
+            Read Full Spec
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</DocsLayout>

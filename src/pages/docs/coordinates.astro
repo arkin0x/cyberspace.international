@@ -1,0 +1,301 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Coordinate System" description="The 256-bit interleaved coordinate system with X, Y, Z axes and plane bit">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      The Cyberspace Coordinate System
+    </h1>
+    
+    <p class="text-lg text-slate-300 mb-8">
+      Cyberspace is a 256-bit coordinate system with three spatial axes (X, Y, Z) and a plane bit. 
+      Coordinates are not stored sequentially. they are <em>interleaved</em> at the bit level, creating 
+      a mathematical structure where spatial proximity corresponds to bit similarity.
+    </p>
+
+    <!-- What is a Coordinate -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">What Is a Coordinate?</h2>
+      
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <p class="text-slate-300 mb-4">
+          A Cyberspace coordinate (<strong>coord256</strong>) is a 256-bit integer with this structure:
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <span class="font-mono text-cyan-400 mr-3 select-none">X (85 bits)</span>
+            <span class="text-slate-300">Spatial axis, bits at positions 3, 6, 9, .. (every 3rd bit starting at 3)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="font-mono text-cyan-400 mr-3 select-none">Y (85 bits)</span>
+            <span class="text-slate-300">Spatial axis, bits at positions 2, 5, 8, .. (every 3rd bit starting at 2)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="font-mono text-cyan-400 mr-3 select-none">Z (85 bits)</span>
+            <span class="text-slate-300">Spatial axis, bits at positions 1, 4, 7, .. (every 3rd bit starting at 1)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="font-mono text-cyan-400 mr-3 select-none">P (1 bit)</span>
+            <span class="text-slate-300">Plane bit at position 0 (LSB): 0 = dataspace, 1 = ideaspace</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        The bit pattern is <strong class="font-mono">XYZXYZXYZ...P</strong> .  the three axes are interleaved 
+        bit-by-bit, with the plane bit as the least significant bit. This interleaving ensures that spatially 
+        nearby coordinates share similar bit prefixes.
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-lg p-6 mb-6">
+        <p class="font-mono text-cyan-400 text-center text-sm mb-4">
+          coord = Z₀Y₀X₀ .. XYZP
+        </p>
+        <p class="text-slate-400 text-sm text-center">
+          Where subscript indicates bit position (₀ = LSB of each axis), P = plane bit
+        </p>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        More precisely:
+      </p>
+      <ul class="list-disc list-inside text-slate-300 space-y-2 ml-4 mb-6">
+        <li>Bit 0: Plane bit P</li>
+        <li>Bit 1: Z₀ (bit 0 of Z)</li>
+        <li>Bit 2: Y₀ (bit 0 of Y)</li>
+        <li>Bit 3: X₀ (bit 0 of X)</li>
+        <li>Bit 4: Z₁ (bit 1 of Z)</li>
+        <li>Bit 5: Y₁ (bit 1 of Y)</li>
+        <li>Bit 6: X₁ (bit 1 of X)</li>
+        <li>...continuing for all 85 bits</li>
+      </ul>
+
+      <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg my-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-cyan-400">Key Insight</h3>
+        <p class="text-slate-300">
+          The interleaving is not arbitrary. it enables the Cantor pairing tree mechanism. 
+          Coordinates that are close in space have similar interleaved bit patterns, which 
+          makes computing traversal proofs efficient and mathematically verifiable.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gibsons and Sectors -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Gibsons and Sectors</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Each 85-bit axis value represents a position along that axis. The fundamental unit of distance 
+        is the <strong>Gibson (G)</strong> .  one step in the 85-bit axis space.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 my-6">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Gibson</h3>
+          <p class="text-slate-300 text-sm">
+            The smallest unit of coordinate distance. Moving 1 Gibson means changing an axis 
+            value by 1. Each axis spans 2⁸⁵ Gibsons (about 3.9 × 10²⁵ positions). Named in 
+            honor of William Gibson's Sprawl Trilogy, which pioneered the vision of cyberspace 
+            as a consensual hallucination with spatial properties.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Sector</h3>
+          <p class="text-slate-300 text-sm">
+            The high 55 bits of an 85-bit axis. Each sector contains 2³⁰ Gibsons 
+            (about 1 billion positions). For rendering cyberspace visualizations, a sector 
+            is small enough that each axis fits into an i32 variable—compatible with most 
+            graphics and game coordinate systems. Sectors are used for region-based operations 
+            like Hyperspace entry planes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Two Planes -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">The Two Planes</h2>
+      
+      <p class="text-slate-300 mb-4">
+        The plane bit creates two overlapping coordinate spaces:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-3">Dataspace (P = 0)</h3>
+          <p class="text-slate-300 text-sm mb-4">
+            Every coordinate maps to a point in reality. Dataspace coordinates correspond 
+            to physical locations on and around Earth using ECEF (Earth-Centered, 
+            Earth-Fixed) conversion, covering Earth and extending to geosynchronous orbit and beyond.
+          </p>
+          <p class="text-slate-400 text-xs">
+            Use dataspace for location-based applications, AR content anchored to 
+            physical places, and geographic encryption zones.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Ideaspace (P = 1)</h3>
+          <p class="text-slate-300 text-sm mb-4">
+            No coordinates map to any point in reality. Purely abstract coordinates for content that exists 
+            independently of physical location.
+          </p>
+          <p class="text-slate-400 text-xs">
+            Use ideaspace for virtual spaces, abstract data structures, AI agent 
+            territories, and content that should not be tied to GPS.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-slate-300 mt-6">
+        Both planes share identical mathematical properties. Movement costs, encryption, 
+        and verification work the same way regardless of plane. The plane bit only 
+        determines whether coordinates have a physical-world interpretation.
+      </p>
+    </section>
+
+    <!-- Identity Is Location -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Identity Is Location</h2>
+      
+      <p class="text-slate-300 mb-4">
+        In Cyberspace, your cryptographic identity determines your spawn coordinate. 
+        Your Nostr public key (a 256-bit number) is interpreted as a coordinate using 
+        the same interleaving scheme.
+      </p>
+
+      <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg my-6">
+        <p class="text-slate-300">
+          <strong class="text-cyan-400">Your public key = your spawn location.</strong> 
+          When you first enter Cyberspace, you appear at the coordinate encoded by 
+          your identity. This is not metaphorical. it is a direct mathematical mapping.
+        </p>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        This means:
+      </p>
+      <ul class="list-disc list-inside text-slate-300 space-y-2 ml-4">
+        <li>You cannot choose your spawn point without choosing a different identity</li>
+        <li>Your location is public knowledge if your public key is known</li>
+        <li>Respawning returns you to your original spawn coordinate</li>
+        <li>Identity and location are mathematically inseparable</li>
+      </ul>
+    </section>
+
+    <!-- Movement and Proof-of-Work -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Movement and Proof-of-Work</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Moving between coordinates requires computing a <strong>Cantor pairing tree proof</strong>. 
+        The computational cost scales with the distance crossed. farther jumps require more work.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Why Structured Work?</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          Standard proof-of-work (like Bitcoin mining) grinds random numbers until finding 
+          a hash below a target. The work is real but arbitrary. It doesn't encode spatial information.
+        </p>
+        <p class="text-slate-300 text-sm">
+          Cyberspace uses <strong>structured work</strong>: computing the Cantor tree that 
+          mathematically connects two coordinates. The proof is not "I burned energy" but 
+          "I computed the fabric between these points." This is the difference between 
+          digging a hole and following a path.
+        </p>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        Movement proofs are published as Nostr events:
+      </p>
+      <ul class="list-disc list-inside text-slate-300 space-y-2 ml-4 mb-6">
+        <li><strong class="font-mono">kind: 3333, A: spawn</strong>. Initial entry at identity coordinate</li>
+        <li><strong class="font-mono">kind: 3333, A: hop</strong>. Local movement (within a sector)</li>
+        <li><strong class="font-mono">kind: 3333, A: sidestep</strong>. Boundary crossing (storage-infeasible distances, uses Merkle proof)</li>
+        <li><strong class="font-mono">kind: 3333, A: enter-hyperspace</strong>. Board Hyperspace network via sector plane</li>
+        <li><strong class="font-mono">kind: 3333, A: hyperjump</strong>. Traverse between Hyperjumps in Hyperspace</li>
+      </ul>
+
+      <div class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-purple-400">All Actions Use Kind 3333</h3>
+        <p class="text-slate-300 text-sm">
+          Every Cyberspace movement action uses event kind 3333, differentiated by the 
+          <strong class="font-mono">A</strong> tag. This is a critical protocol pattern 
+          that ensures all movement is validated uniformly by relays.
+        </p>
+      </div>
+    </section>
+
+    <!-- Hyperjumps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Hyperjumps</h2>
+      
+      <p class="text-slate-300 mb-4">
+        A Bitcoin block's Merkle root can be interpreted as a 256-bit coordinate in Cyberspace. 
+        This coordinate is called a <strong>Hyperjump</strong>.  a thermodynamically "paid for" 
+        location that punches holes through the vastness of cyberspace.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Hyperspace Network</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          <strong>Hyperspace</strong> is the 1-dimensional path formed by all Bitcoin blocks 
+          in height order. Each block is a Hyperjump (a coordinate where you can enter the network).
+        </p>
+        <p class="text-slate-300 text-sm">
+          To enter Hyperspace, navigate to a Hyperjump's <strong>sector entry plane</strong> 
+          (all coordinates sharing the same 55-bit sector on X, Y, or Z axis), then publish 
+          an <strong class="font-mono">enter-hyperspace</strong> action with a Cantor proof 
+          (height ≈ 33, ~15 minutes on consumer hardware, ~$0.09 cloud cost).
+        </p>
+      </div>
+
+      <p class="text-slate-300">
+        Once in Hyperspace, travel between Hyperjumps uses a <strong class="font-mono">hyperjump</strong> 
+        action with an incremental Cantor tree proof computed over the path of block heights.
+      </p>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Next Steps</h2>
+      
+      <p class="text-slate-300 mb-6">
+        Now that you understand coordinates, explore the mechanisms that make movement possible:
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs/cantor.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Cantor Pairing Deep Dive</h3>
+          <p class="text-slate-400 text-sm">
+            Learn the mathematics behind Cantor pairing and how it creates the tree structure.
+          </p>
+        </a>
+
+        <a href="/docs/proof-of-work.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Proof-of-Work Mechanics</h3>
+          <p class="text-slate-400 text-sm">
+            Understand how traversal proofs are computed, verified, and published.
+          </p>
+        </a>
+
+        <a href="/docs/hyperspace.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Hyperspace and Hyperjumps</h3>
+          <p class="text-slate-400 text-sm">
+            Learn how Bitcoin blocks create teleport routes through cyberspace.
+          </p>
+        </a>
+
+        <a href="https://github.com/arkin0x/cyberspace/blob/master/CYBERSPACE_V2.md" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Full Specification</h3>
+          <p class="text-slate-400 text-sm">
+            Read the complete CYBERSPACE_V2.md protocol specification.
+          </p>
+        </a>
+      </div>
+    </section>
+  </div>
+</DocsLayout>

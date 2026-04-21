@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/DocsLayout.astro';
+
+const heroContent = {
+  headline: "Bitcoin captured time. Cyberspace captures space.",
+  subhead: "A decentralized cryptographic protocol that imposes locality on digital systems. No blockchain, no trusted servers. Create locality with pure mathematics via Cantor pairing trees and proof-of-work.",
+  useCases: [
+    {
+      icon: "🤖",
+      title: "AI Embodiment",
+      desc: "AI agents with persistent spatial location. Embodied cognition in digital space. Agent-to-agent proximity and interaction. A single-presence restriction for digital entities."
+    },
+    {
+      icon: "🥽",
+      title: "Interoperable AR Layer",
+      desc: "Shared coordinate system across AR platforms. Digital objects anchored to real-world GPS via cyberspace coordinates. Persistent AR content that survives app boundaries. The Dataspace plane maps to physical reality, covering Earth and extending to geosynchronous orbit and beyond."
+    },
+    {
+      icon: "🔐",
+      title: "Location-Based Encryption",
+      desc: "Cryptographic keys bound to cyberspace coordinates. Content decryptable only when an agent proves presence at location. Applications in secure communications, geo-fenced data, and chalk-on-sidewalk access control."
+    }
+  ],
+  problems: [
+    {
+      icon: "🏘️",
+      title: "Communities With Boundaries",
+      desc: "Physical communities have natural membership: you must be there. Online communities lack these constraints. Locality reintroduces the constraint of presence, making membership require traversal."
+    },
+    {
+      icon: "🔐",
+      title: "Hiding Without Trust",
+      desc: "Like chalk on a sidewalk: anyone who walks by can read it, but you cannot read it without walking there. No keys, no admins, no infrastructure. Only presence."
+    }
+  ],
+  howItWorks: [
+    {
+      num: 1,
+      title: "Cantor Pairing Trees",
+      desc: "Each axis (X, Y, Z) gets its own 85-bit Cantor tree. Movement proofs are computed per-axis, then combined. The result: structured work that represents actual traversal of mathematical fabric.",
+      detail: "Unlike arbitrary hash grinding, Cantor trees create real mathematical structure. Each number represents an actual subtree that must be traversed."
+    },
+    {
+      num: 2,
+      title: "Temporal Work Axis",
+      desc: "Each hop includes a temporal computation seeded from the previous movement event. The work for hop N cannot be precomputed until hop N-1 is complete.",
+      detail: "This prevents cache-reuse attacks. Every hop costs fresh work, maintaining thermodynamic continuity."
+    },
+    {
+      num: 3,
+      title: "Nostr Integration",
+      desc: "Movement proofs are published as Nostr events (kind 3333). Your traversal history is globally verifiable, composable, and permanently recorded.",
+      detail: "Nostr provides identity and propagation. Cyberspace adds where, distance, and locality."
+    }
+  ],
+  keyProperty: {
+    title: "Work Equivalence: The Key Property",
+    desc: "In almost every digital system, observers have advantages over participants. Cyberspace achieves a rare property: computing a region's preimage costs the same whether you traveled there via movement chain or computed it directly. You cannot know what is somewhere without doing the work.",
+    quote: "This is the difference between digging a hole (arbitrary hashing) and following a path (structured traversal). Both cost energy, but only one has spatial semantics."
+  }
+};
+---
+
+<Layout title="Cyberspace Protocol" description="Digital space with real locality">
+  
+  <!-- Hero Section -->
+  <section class="py-20 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        {heroContent.headline}
+      </h1>
+      <p class="text-xl text-slate-300 mb-10 max-w-3xl leading-relaxed">
+        {heroContent.subhead}
+      </p>
+      
+      <div class="flex flex-wrap gap-4">
+        <a href="/docs/getting-started.html" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg font-semibold hover:opacity-90 transition-opacity text-lg">
+          Start Exploring
+        </a>
+        <a href="https://github.com/arkin0x/cyberspace/blob/main/CYBERSPACE_V2.md" class="px-8 py-4 border border-slate-600 rounded-lg hover:border-cyan-400 transition-colors text-lg">
+          Read the Spec
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-16 border-b border-slate-800 bg-gradient-to-b from-slate-900/50 to-transparent">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-4 text-center">Use Cases</h2>
+      <p class="text-lg text-slate-300 mb-12 text-center max-w-3xl mx-auto">
+        Cyberspace Protocol enables applications that require verifiable spatial presence and location-based access control.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {heroContent.useCases.map((useCase) => (
+          <div class="p-8 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-600 transition-colors">
+            <div class="text-4xl mb-4">{useCase.icon}</div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">{useCase.title}</h3>
+            <p class="text-slate-400 leading-relaxed">{useCase.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Locality Matters -->
+  <section class="py-16 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center">Why Locality Matters</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {heroContent.problems.map((problem) => (
+          <div class="p-8 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-slate-600 transition-colors">
+            <div class="text-4xl mb-4">{problem.icon}</div>
+            <h3 class="text-xl font-semibold mb-3 text-slate-200">{problem.title}</h3>
+            <p class="text-slate-400 leading-relaxed">{problem.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center">How It Works</h2>
+      
+      <div class="space-y-8">
+        {heroContent.howItWorks.map((step) => (
+          <div class="flex gap-6 p-6 bg-slate-900/30 rounded-xl border border-slate-800">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-400 text-xl">
+              {step.num}
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-3 text-slate-200">{step.title}</h3>
+              <p class="text-slate-400 mb-3 leading-relaxed">{step.desc}</p>
+              <p class="text-slate-500 text-sm italic border-l-2 border-cyan-500/30 pl-4">{step.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Equivalence -->
+  <section class="py-16 border-b border-slate-800 bg-gradient-to-b from-slate-900/50 to-transparent">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-6 text-center">{heroContent.keyProperty.title}</h2>
+      <p class="text-lg text-slate-300 mb-8 text-center max-w-3xl mx-auto leading-relaxed">
+        {heroContent.keyProperty.desc}
+      </p>
+      <blockquote class="border-l-4 border-purple-500 pl-6 py-4 my-8 bg-slate-900/50 rounded-r-lg">
+        <p class="text-slate-300 italic text-lg">{heroContent.keyProperty.quote}</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- The Chalk Metaphor -->
+  <section class="py-16 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-6">The Chalk on the Sidewalk</h2>
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-slate-300 text-lg leading-relaxed mb-4">
+            Consider a message written in chalk on a sidewalk:
+          </p>
+          <ul class="space-y-3 text-slate-400">
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 mt-1 flex-shrink-0">▸</span>
+              <span>It is not "encrypted" in any technical sense</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 mt-1 flex-shrink-0">▸</span>
+              <span>Anyone who walks by can read it</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 mt-1 flex-shrink-0">▸</span>
+              <span>But you cannot read it without walking there</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 mt-1 flex-shrink-0">▸</span>
+              <span>Even if someone tells you about it, they had to walk there to know</span>
+            </li>
+          </ul>
+          <p class="text-slate-300 mt-6 text-lg">
+            This is <strong class="text-cyan-400">location-gated access</strong> that requires no keys, no permissions, no infrastructure. Only presence.
+          </p>
+        </div>
+        <div class="bg-slate-900 rounded-xl p-6 border border-slate-800 overflow-x-auto">
+          <pre class="font-mono text-xs text-slate-300 whitespace-pre-wrap break-words">
+<code># Encrypt a message at a specific location (X, Y, Z, plane=0)
+$ cyberspace encrypt --at 42,17,3 --message "Meet me here at dawn"
+✓ Encrypted for coordinate (42, 17, 3, plane=0)
+✓ Published ciphertext event (kind 33330)
+✓ Ciphertext: 0x8f2a1b...e9c4
+
+# Attempt to decrypt from wrong location
+$ cyberspace decrypt --event 0x8f2a1b...e9c4
+✗ Proof failed: LCA height 34 (requires presence at target)
+✗ Cannot decrypt without proving location
+
+# Travel to the location (requires proof-of-work)
+$ cyberspace move --to 42,17,3
+✓ Computing traversal proof..
+✓ Computed hop proof (LCA height: 3)
+✓ New position: (42, 17, 3, plane=0)
+
+# Decrypt from the correct location
+$ cyberspace decrypt --event 0x8f2a1b...e9c4
+✓ Presence verified at (42, 17, 3)
+✓ Decrypted: "Meet me here at dawn"</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem -->
+  <section class="py-16 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <h2 class="text-3xl font-bold mb-8 text-center">Ecosystem</h2>
+      <p class="text-lg text-slate-300 mb-12 text-center max-w-3xl mx-auto">
+        Cyberspace is an open source protocol with a growing ecosystem of specifications, tools, and communities.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="https://github.com/arkin0x/cyberspace/blob/main/CYBERSPACE_V2.md" class="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-3 group-hover:text-cyan-300">Protocol Specification</h3>
+          <p class="text-sm text-slate-400">Core protocol spec on GitHub</p>
+        </a>
+        <a href="https://github.com/arkin0x/cyberspace/tree/master/decks" class="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors group">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3 group-hover:text-purple-300">DECKs</h3>
+          <p class="text-sm text-slate-400">Extension documents including Hyperspace</p>
+        </a>
+        <a href="https://github.com/arkin0x/cyberspace-cli" class="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors group">
+          <h3 class="text-lg font-semibold text-green-400 mb-3 group-hover:text-green-300">CLI Implementation</h3>
+          <p class="text-sm text-slate-400">Python tools for traversal</p>
+        </a>
+        <a href="https://straylight.cafe" class="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-pink-400 transition-colors group">
+          <h3 class="text-lg font-semibold text-pink-400 mb-3 group-hover:text-pink-300">Community Hub</h3>
+          <p class="text-sm text-slate-400">Join the community at Straylight</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to explore?</h2>
+      <p class="text-slate-400 mb-10 text-lg max-w-2xl mx-auto">
+        Cyberspace has layers. Explore at your own pace. Start with the basics, then dive deep into the mathematical foundations.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/docs/getting-started.html" class="px-8 py-4 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-lg hover:bg-cyan-500/30 transition-colors">
+          Beginner's Guide
+        </a>
+        <a href="/docs/coordinates.html" class="px-8 py-4 bg-purple-500/20 text-purple-400 border border-purple-500/50 rounded-lg hover:bg-purple-500/30 transition-colors">
+          Coordinate System
+        </a>
+        <a href="https://github.com/arkin0x/cyberspace/blob/main/CYBERSPACE_V2.md" class="px-8 py-4 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:border-slate-500 transition-colors">
+          Full Specification
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

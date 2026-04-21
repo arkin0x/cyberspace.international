@@ -1,0 +1,444 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Hyperspace and Hyperjumps" description="Bitcoin-backed teleport network for cyberspace traversal">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Hyperspace and Hyperjumps
+    </h1>
+    
+    <p class="text-lg text-slate-300 mb-8">
+      Hyperspace is a 1-dimensional transit network through cyberspace, formed by 
+      Bitcoin block Merkle roots in block height order. Each Bitcoin block is a 
+      <strong>Hyperjump</strong> .  a thermodynamically "paid for" coordinate that 
+      enables long-distance traversal at consumer-feasible cost.
+    </p>
+
+    <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg mb-8">
+      <h3 class="text-lg font-semibold mb-2 mt-0 text-cyan-400">The Key Insight</h3>
+      <p class="text-slate-300">
+        Bitcoin blocks cost real energy to produce. By treating each block's 
+        Merkle root as a coordinate in cyberspace, the entire Bitcoin network 
+        becomes a precomputed set of waypoints .  a subway system through the 
+        vastness of digital space. Every 10 minutes, a new station opens at 
+        an unpredictable location.
+      </p>
+    </div>
+
+    <!-- The Bootstrap Problem -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">The Bootstrap Problem</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Cyberspace is vast. A newly spawned identity at coordinate (0, 0, 0) 
+        wanting to reach a distant point of interest faces a fundamental challenge: 
+        the computational cost of traversal.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">The Math</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          To reach an <strong>exact</strong> coordinate at typical inter-sector distances:
+        </p>
+        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+          <li>LCA height required: approximately 84</li>
+          <li>Computational cost: 2 to the power of 84 operations</li>
+          <li>Time estimate: approximately 10 to the power of 11 years</li>
+          <li><strong>Status:</strong> Categorically infeasible</li>
+        </ul>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        This is the <strong>bootstrap problem</strong>: how can a newly spawned 
+        identity reach any point of interest without requiring more computation 
+        than the age of the universe?
+      </p>
+
+      <div class="bg-green-500/10 border border-green-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-green-400">Solution: Sector-Based Entry</h3>
+        <p class="text-slate-300">
+          Instead of requiring navigation to an exact 3D point, Hyperspace entry 
+          accepts any coordinate within a <strong>sector entry plane</strong>.  
+          This reduces the required LCA height from approximately 84 to approximately 33, which takes 
+          about 15 minutes and costs around $0.09 on cloud compute.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sector Entry Planes -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Sector Entry Planes</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Each Hyperjump has three entry planes, one per spatial axis. An entry 
+        plane is the set of all coordinates sharing the same 55-bit sector 
+        as the Hyperjump on that axis.
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Definition</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          For a Hyperjump at coordinate <strong>H = (Hx, Hy, Hz)</strong>:
+        </p>
+        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+          <li><strong>X-plane:</strong> All coordinates where sector(X) = sector(Hx)</li>
+          <li><strong>Y-plane:</strong> All coordinates where sector(Y) = sector(Hy)</li>
+          <li><strong>Z-plane:</strong> All coordinates where sector(Z) = sector(Hz)</li>
+        </ul>
+        <p class="text-slate-400 text-xs mt-4">
+          Each plane is 1 sector thick (2 to the power of 30 Gibsons, about 1 billion positions). 
+          The plane bit (P) is inherited from the Hyperjump coordinate.
+        </p>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        To extract a sector from an axis value, use the high 55 bits of the 85-bit axis:
+      </p>
+
+      <details class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 cursor-pointer">
+        <summary class="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          Show Python: Extract sector from axis
+        </summary>
+        <pre class="mt-4 bg-slate-950 border border-slate-700 rounded-lg p-4 overflow-x-auto text-xs font-mono text-slate-300">
+def sector(axis_value: int) -> int:
+    """Extract 55-bit sector from 85-bit axis value."""
+    return axis_value >> 30  # High 55 bits</pre>
+      </details>
+
+      <div class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg my-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-purple-400">Why 55 Bits?</h3>
+        <p class="text-slate-300">
+          The 55-bit sector was chosen to balance entry feasibility with 
+          spatial specificity. A 55-bit match reduces the search space 
+          from 2 to the power of 85 to 2 to the power of 30 Gibsons.  
+          This is a volume large enough to be reachable, 
+          small enough to be meaningful.
+        </p>
+      </div>
+    </section>
+
+    <!-- Enter-Hyperspace Action -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Enter-Hyperspace Action</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Once positioned on a sector entry plane, publish an 
+        <strong>enter-hyperspace</strong> action to board the Hyperspace network.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Event Structure</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          <strong>Kind:</strong> 3333 (all Cyberspace actions)
+        </p>
+        <p class="text-slate-300 text-sm mb-3">
+          <strong>A tag:</strong> enter-hyperspace
+        </p>
+        <p class="text-slate-300 text-sm mb-3">
+          <strong>Required tags:</strong>
+        </p>
+        <ul class="text-slate-400 text-xs space-y-1 ml-4">
+          <li><code>e</code> .  Genesis event ID</li>
+          <li><code>e</code> .  Previous event ID</li>
+          <li><code>c</code> .  Previous coordinate</li>
+          <li><code>C</code> .  Current coordinate (on entry plane)</li>
+          <li><code>M</code> .  Hyperjump Merkle root</li>
+          <li><code>B</code> .  Bitcoin block height</li>
+          <li><code>axis</code> .  Entry axis (X, Y, or Z)</li>
+          <li><code>proof</code> .  Cantor proof to reach the plane</li>
+          <li><code>X, Y, Z</code> .  Hyperjump coordinate components</li>
+          <li><code>S</code> .  Sector value</li>
+        </ul>
+      </div>
+
+      <details class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 mb-6 cursor-pointer">
+        <summary class="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          Show Python: Enter-hyperspace example
+        </summary>
+        <pre class="mt-4 bg-slate-950 border border-slate-700 rounded-lg p-4 overflow-x-auto text-xs font-mono text-slate-300">
+# Enter Hyperspace: Python Example
+
+from cyberspace_core.cantor import compute_temporal_seed, build_hyperspace_proof
+from cyberspace_core.sector import coord_matches_hyperjump_plane
+
+# 1. Validate you're on a sector entry plane
+coord_int = int.from_bytes(bytes.fromhex(my_coord), "big")
+if not coord_matches_hyperjump_plane(coord_int, merkle_root, "Y"):
+    raise ValueError("Not on Y-plane")
+
+# 2. Compute Cantor proof to reach the plane
+# (same as standard hop proof)
+temporal_seed = compute_temporal_seed(bytes.fromhex(prev_event_id))
+leaves = [temporal_seed, from_height, to_height]
+proof_root = build_hyperspace_proof(leaves)
+
+# 3. Create enter-hyperspace event
+from cyberspace_cli.nostr_event import make_enter_hyperspace_event
+
+event = make_enter_hyperspace_event(
+    pubkey_hex=pubkey,
+    created_at=created_at,
+    genesis_event_id=genesis_id,
+    previous_event_id=prev_id,
+    prev_coord_hex=prev_coord,
+    coord_hex=my_coord,
+    merkle_root_hex=merkle_root,
+    block_height=block_height,
+    axis="Y",
+    proof_hex=format(proof_root, 'x'),
+)</pre>
+      </details>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h3 class="font-semibold text-cyan-400 mb-2">LCA Height</h3>
+          <p class="text-slate-400 text-sm">Approximately 33 (to reach sector plane)</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h3 class="font-semibold text-cyan-400 mb-2">Compute Time</h3>
+          <p class="text-slate-400 text-sm">Approximately 15 minutes</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h3 class="font-semibold text-cyan-400 mb-2">Cloud Cost</h3>
+          <p class="text-slate-400 text-sm">Approximately $0.09</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hyperjump Traversal -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Hyperjump Traversal</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Once in Hyperspace, travel between Hyperjumps uses the 
+        <strong>hyperjump</strong> action with an incremental Cantor tree proof.
+      </p>
+
+      <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-cyan-400">The Hyperspace Proof</h3>
+        <p class="text-slate-300 mb-3">
+          The proof encodes the path through Hyperspace as a Cantor tree over block heights:
+        </p>
+        <ol class="text-slate-300 text-sm space-y-2 list-decimal list-inside">
+          <li><strong>Temporal seed:</strong> Derived from previous event ID (prevents replay)</li>
+          <li><strong>Leaves:</strong> [temporal_seed, B_from, B_from+1, ..., B_to]</li>
+          <li><strong>Root:</strong> Cantor tree over all leaves</li>
+        </ol>
+        <p class="text-slate-400 text-xs mt-3">
+          Cost: O(path_length) Cantor pairings, about 200 nanoseconds per block
+        </p>
+      </div>
+
+      <details class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 mb-6 cursor-pointer">
+        <summary class="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          Show Python: Hyperjump traversal example
+        </summary>
+        <pre class="mt-4 bg-slate-950 border border-slate-700 rounded-lg p-4 overflow-x-auto text-xs font-mono text-slate-300">
+# Hyperjump Traversal: Python Example
+
+from cyberspace_core.cantor import compute_temporal_seed, build_hyperspace_proof
+from cyberspace_cli.nostr_event import make_hyperjump_event
+
+# 1. Compute temporal seed from previous event
+temporal_seed = compute_temporal_seed(bytes.fromhex(prev_event_id))
+
+# 2. Build leaves: [temporal_seed, B_from, B_from+1, .., B_to]
+# For a jump from block 850000 to 850005:
+leaves = [temporal_seed, 850000, 850001, 850002, 850003, 850004, 850005]
+
+# 3. Build Cantor tree over all leaves
+proof_root = build_hyperspace_proof(leaves)
+
+# 4. Create hyperjump event with DECK-0001 tags
+event = make_hyperjump_event(
+    pubkey_hex=pubkey,
+    created_at=created_at,
+    genesis_event_id=genesis_id,
+    previous_event_id=prev_id,
+    prev_coord_hex=prev_coord,
+    coord_hex=new_coord,
+    from_height=850000,      # DECK-0001
+    to_height=850005,        # DECK-0001
+    from_hj_hex=from_hj_merkle,  # DECK-0001
+    proof_hex=format(proof_root, 'x'),
+)</pre>
+      </details>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">DECK-0001 Tags</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          The hyperjump action includes optional DECK-0001 tags for explicit path encoding:
+        </p>
+        <ul class="text-slate-400 text-xs space-y-1 ml-4">
+          <li><code>from_height</code> .  Starting block height</li>
+          <li><code>to_height</code> .  Destination block height</li>
+          <li><code>from_hj_hex</code> .  Source Hyperjump Merkle root</li>
+          <li><code>proof_hex</code> .  Cantor tree proof over path</li>
+        </ul>
+        <p class="text-slate-400 text-xs mt-3">
+          These tags are optional for backward compatibility but recommended for clarity.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="font-semibold text-cyan-400 mb-2">1-Block Jump</h3>
+          <p class="text-slate-400 text-sm">Approximately 200 nanoseconds</p>
+          <p class="text-slate-400 text-xs mt-1">Cost: negligible</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="font-semibold text-cyan-400 mb-2">1000-Block Jump</h3>
+          <p class="text-slate-400 text-sm">Approximately 1 microsecond</p>
+          <p class="text-slate-400 text-xs mt-1">Cost: negligible</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Entry vs Traversal -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Entry vs Traversal: Key Distinctions</h2>
+      
+      <p class="text-slate-300 mb-4">
+        It is critical to distinguish between <strong>entering</strong> Hyperspace 
+        and <strong>traveling through</strong> Hyperspace. These are different 
+        actions with different proofs.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-slate-800 text-cyan-400">
+            <tr>
+              <th class="px-4 py-3">Aspect</th>
+              <th class="px-4 py-3">Entry</th>
+              <th class="px-4 py-3">Traversal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Purpose</td>
+              <td class="px-4 py-3 text-slate-300">Board the HJ network</td>
+              <td class="px-4 py-3 text-slate-300">Travel between HJs</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Action</td>
+              <td class="px-4 py-3 font-mono text-cyan-400">enter-hyperspace</td>
+              <td class="px-4 py-3 font-mono text-cyan-400">hyperjump</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Proof</td>
+              <td class="px-4 py-3 text-slate-300">Cantor to plane (h approximately 33)</td>
+              <td class="px-4 py-3 text-slate-300">Cantor tree over path</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Non-reuse</td>
+              <td class="px-4 py-3 text-slate-300">Chain position binding</td>
+              <td class="px-4 py-3 text-slate-300">Temporal leaf binding</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">Spec</td>
+              <td class="px-4 py-3 text-slate-300">DECK-0001 Section I</td>
+              <td class="px-4 py-3 text-slate-300">DECK-0001 Sections 7-8</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Exit Mechanism -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Exit Mechanism</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Exiting Hyperspace at a destination Hyperjump is automatic .  the identity 
+        arrives at the exact 3D coordinate (Hx, Hy, Hz) of the destination Hyperjump.
+      </p>
+
+      <div class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-purple-400">Preserving Spatial Meaning</h3>
+        <p class="text-slate-300">
+          The exit mechanism ensures that Hyperspace travel preserves the spatial 
+          meaning of coordinates. You cannot "free teleport around" .  you arrive 
+          exactly where the Hyperjump coordinate says you arrive. This maintains 
+          the integrity of distance and location in cyberspace.
+        </p>
+      </div>
+    </section>
+
+    <!-- Naming Convention -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Naming Convention</h2>
+      
+      <p class="text-slate-300 mb-4">
+        The Hyperspace terminology follows a precise convention:
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+        <ul class="space-y-3 text-slate-300">
+          <li>
+            <strong class="text-cyan-400">Hyperspace</strong> (noun, capitalized) .  
+            The 1-dimensional transit network formed by Bitcoin block Merkle roots
+          </li>
+          <li>
+            <strong class="text-cyan-400">Hyperjump</strong> (noun, capitalized) .  
+            A Bitcoin block's Merkle root interpreted as a coordinate in cyberspace; 
+            an object or location in Hyperspace
+          </li>
+          <li>
+            <strong class="font-mono text-purple-400">hyperjump</strong> (verb, lowercase) .  
+            The action of traveling between Hyperjumps within Hyperspace
+          </li>
+          <li>
+            <strong class="font-mono text-purple-400">enter-hyperspace</strong> (action) .  
+            The action of boarding the Hyperspace network via a sector entry plane
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-lg mt-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-yellow-400">Avoid These Mistakes</h3>
+        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+          <li>Do not use "hyperspace" (lowercase) when referring to the network</li>
+          <li>Do not use "hyper jump" (two words) .  always one word</li>
+          <li>Do not use "jump" alone .  use "hyperjump" for the noun, "hyperjump" for the verb</li>
+          <li>Do not use "enter" without context .  use "enter-hyperspace" for the action</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Next Steps</h2>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs/proof-of-work.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Proof-of-Work Mechanics</h3>
+          <p class="text-slate-400 text-sm">
+            Deep dive into hyperspace proof construction and verification.
+          </p>
+        </a>
+
+        <a href="/docs/cantor.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Cantor Pairing</h3>
+          <p class="text-slate-400 text-sm">
+            Understand the mathematical foundation of traversal proofs.
+          </p>
+        </a>
+
+        <a href="https://github.com/arkin0x/cyberspace/decks/DECK-0001-hyperspace.md" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ DECK-0001 Specification</h3>
+          <p class="text-slate-400 text-sm">
+            Read the full Hyperspace specification on GitHub.
+          </p>
+        </a>
+
+        <a href="/docs/coordinates.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">← Coordinate System</h3>
+          <p class="text-slate-400 text-sm">
+            Review the 256-bit interleaved coordinate structure.
+          </p>
+        </a>
+      </div>
+    </section>
+  </div>
+</DocsLayout>

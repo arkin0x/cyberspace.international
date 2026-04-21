@@ -1,0 +1,305 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Sidestep: LCA Boundary Crossing" description="Merkle proof mechanism for crossing infeasible LCA boundaries">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Sidestep: LCA Boundary Crossing
+    </h1>
+    
+    <p class="text-lg text-slate-300 mb-8">
+      Sidestep is a movement action for crossing LCA (Lowest Common Ancestor) boundaries 
+      that are computationally infeasible to traverse via Cantor pairing. It uses a 
+      <strong>Merkle hash tree proof</strong> to demonstrate knowledge of a valid path, 
+      enabling movement between regions separated by storage-infeasible heights.
+    </p>
+
+    <div class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg mb-8">
+      <h3 class="text-lg font-semibold mb-2 mt-0 text-purple-400">Key Distinction</h3>
+      <p class="text-slate-300">
+        Sidestep uses <strong>Merkle proofs</strong>, not Cantor pairing. This is intentional: 
+        sidestep is designed for heights where direct traversal is infeasible (h > 35-40). 
+        The Merkle proof demonstrates knowledge of the path without requiring O(2^h) computation.
+      </p>
+    </div>
+
+    <!-- What is Sidestep -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">What Is Sidestep?</h2>
+      
+      <p class="text-slate-300 mb-4">
+        In the Cyberspace coordinate system, movement between coordinates requires proving 
+        you've traversed the path. For nearby coordinates (low LCA height), this is done 
+        with <a href="/docs/cantor" class="text-cyan-400 hover:text-cyan-300">Cantor pairing trees</a>. 
+        But what about crossing boundaries that are thermodynamically infeasible?
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">The Infeasible Heights</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          LCA heights above 35-40 become storage-infeasible:
+        </p>
+        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+          <li><strong>h = 35:</strong> ~34 billion leaves (storage challenge)</li>
+          <li><strong>h = 40:</strong> ~1 trillion leaves (nation-state scale)</li>
+          <li><strong>h = 84:</strong> Categorically infeasible (more than age of universe)</li>
+        </ul>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        Sidestep allows entities to cross these boundaries by publishing a Merkle proof 
+        that demonstrates knowledge of the intermediate coordinates, without requiring 
+        the entity to have computed every step.
+      </p>
+    </section>
+
+    <!-- When to Use Sidestep -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">When to Use Sidestep</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-3">Use Cantor Pairing</h3>
+          <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+            <li>Local movement (hop action)</li>
+            <li>Hyperspace entry (enter-hyperspace)</li>
+            <li>Inter-hyperjump traversal (hyperjump)</li>
+            <li>LCA height &lt; 35</li>
+            <li>Feasible computation: O(path_length)</li>
+          </ul>
+        </div>
+
+        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">Use Sidestep (Merkle)</h3>
+          <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+            <li>LCA boundary crossing</li>
+            <li>Storage-infeasible heights</li>
+            <li>LCA height &gt; 35-40</li>
+            <li>Proving knowledge without full traversal</li>
+            <li>Sector-to-sector movement</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Structure -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Event Structure</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Sidestep events use the standard Cyberspace action kind with a specific action tag:
+      </p>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Nostr Event Format</h3>
+        <pre class="text-xs text-slate-300 overflow-x-auto"><code>{`{
+  "kind": 3333,
+  "tags": [
+    ["A", "sidestep"],
+    ["c", "<prev_coord_hex>"],
+    ["c", "<new_coord_hex>"],
+    ["proof", "<merkle_root_hex>"]
+  ],
+  "content": ""
+}`}</code></pre>
+      </div>
+
+      <div class="bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-yellow-400">Critical: Kind 3333 Pattern</h3>
+        <p class="text-slate-300 text-sm">
+          <strong>ALL</strong> Cyberspace movement actions use <code class="bg-slate-800 px-2 py-1 rounded">kind: 3333</code>. 
+          The action type is differentiated ONLY by the <code class="bg-slate-800 px-2 py-1 rounded">A</code> tag:
+        </p>
+        <ul class="text-slate-300 text-sm space-y-1 mt-3 list-disc list-inside">
+          <li><code class="text-cyan-400">A=spawn</code> — Initial entry to cyberspace</li>
+          <li><code class="text-cyan-400">A=hop</code> — Local movement (within sector)</li>
+          <li><code class="text-purple-400">A=sidestep</code> — LCA boundary crossing (Merkle proof)</li>
+          <li><code class="text-cyan-400">A=enter-hyperspace</code> — Hyperspace plane entry (Cantor proof, h≈33)</li>
+          <li><code class="text-cyan-400">A=hyperjump</code> — Inter-hyperjump traversal (Cantor tree)</li>
+        </ul>
+        <p class="text-slate-400 text-xs mt-3">
+          See: <code class="font-mono">DECK-0001-hyperspace.md</code>, <code class="font-mono">DECISION-action-kinds.md</code>
+        </p>
+      </div>
+    </section>
+
+    <!-- Merkle Proof Construction -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Merkle Proof Construction</h2>
+      
+      <p class="text-slate-300 mb-4">
+        The sidestep Merkle proof demonstrates knowledge of the path between two coordinates 
+        separated by an infeasible LCA height.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Proof Structure</h3>
+        <ol class="text-slate-300 text-sm space-y-3 list-decimal list-inside">
+          <li>
+            <strong>Leaves:</strong> The set of intermediate coordinates forming the path 
+            from source to destination. These are the coordinates at the LCA boundary.
+          </li>
+          <li>
+            <strong>Tree construction:</strong> Standard Merkle tree: pair adjacent leaves, 
+            hash each pair (SHA-256), repeat until single root remains.
+          </li>
+          <li>
+            <strong>Proof publication:</strong> Publish the Merkle root in the 
+            <code class="bg-slate-900 px-1 py-0.5 rounded font-mono text-cyan-400">proof</code> tag.
+          </li>
+          <li>
+            <strong>Verification:</strong> Verifier can validate the proof demonstrates knowledge 
+            of the path without recomputing every coordinate.
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-700 rounded-lg p-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3">Why Merkle (Not Cantor)?</h3>
+        <p class="text-slate-300 text-sm mb-4">
+          Cantor pairing is bijective and preserves entropy, making it ideal for feasible 
+          heights where direct computation is possible. But at storage-infeasible heights, 
+          the goal shifts from <em>computing</em> the path to <em>proving knowledge</em> of the path.
+        </p>
+        <p class="text-slate-300 text-sm">
+          Merkle proofs are the standard cryptographic tool for this: they demonstrate 
+          knowledge of data without revealing all of it, and verification is efficient 
+          (O(log n) hashes) even when the full dataset is massive.
+        </p>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Use Cases</h2>
+      
+      <div class="space-y-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Sector Transitions</h3>
+          <p class="text-slate-300 text-sm">
+            Moving between sectors that are separated by high LCA boundaries. 
+            Sidestep enables crossing without requiring infeasible computation.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">LCA Boundary Crossings</h3>
+          <p class="text-slate-300 text-sm">
+            Any movement where the LCA height exceeds practical computation limits 
+            (h > 35-40). Sidestep provides a feasible proof mechanism.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-2">Progressive Unlocking</h3>
+          <p class="text-slate-300 text-sm">
+            Future protocols may use sidestep proofs for progressive content unlocking, 
+            where revealing Merkle branches gradually exposes deeper content layers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Proof Mechanism Comparison</h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-slate-300">
+          <thead class="text-xs uppercase bg-slate-800 text-cyan-400">
+            <tr>
+              <th class="px-4 py-3 text-left">Action</th>
+              <th class="px-4 py-3 text-left">Proof Type</th>
+              <th class="px-4 py-3 text-left">LCA Height</th>
+              <th class="px-4 py-3 text-left">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-mono text-cyan-400">hop</td>
+              <td class="px-4 py-3">Cantor pairing</td>
+              <td class="px-4 py-3">Low (&lt; 20)</td>
+              <td class="px-4 py-3">O(path_length)</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-mono text-cyan-400">enter-hyperspace</td>
+              <td class="px-4 py-3">Cantor proof</td>
+              <td class="px-4 py-3">h ≈ 33</td>
+              <td class="px-4 py-3">~15 min, $0.09</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-mono text-cyan-400">hyperjump</td>
+              <td class="px-4 py-3">Cantor tree + temporal leaf</td>
+              <td class="px-4 py-3">Path length</td>
+              <td class="px-4 py-3">O(blocks traversed)</td>
+            </tr>
+            <tr class="border-b border-slate-700 bg-purple-500/10">
+              <td class="px-4 py-3 font-mono text-purple-400">sidestep</td>
+              <td class="px-4 py-3"><strong>Merkle tree</strong></td>
+              <td class="px-4 py-3">h &gt; 35-40</td>
+              <td class="px-4 py-3">Storage-bound</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">References</h2>
+      
+      <ul class="space-y-3 text-slate-300">
+        <li>
+          <a 
+            href="https://github.com/arkinox/cyberspace/decks/DECISION-action-kinds.md" 
+            class="text-cyan-400 hover:text-cyan-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <code class="bg-slate-800 px-2 py-1 rounded text-xs">DECISION-action-kinds.md</code>
+          </a>
+          <span class="text-slate-400"> — Locked decision: all actions use kind 3333</span>
+        </li>
+        <li>
+          <a 
+            href="https://github.com/arkinox/cyberspace/decks/DECK-0001-hyperspace.md" 
+            class="text-cyan-400 hover:text-cyan-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <code class="bg-slate-800 px-2 py-1 rounded text-xs">DECK-0001-hyperspace.md</code>
+          </a>
+          <span class="text-slate-400"> — Hyperspace entry and traversal mechanics</span>
+        </li>
+        <li>
+          <a 
+            href="https://github.com/arkinox/cyberspace/CYBERSPACE_V2.md" 
+            class="text-cyan-400 hover:text-cyan-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <code class="bg-slate-800 px-2 py-1 rounded text-xs">CYBERSPACE_V2.md</code>
+          </a>
+          <span class="text-slate-400"> — Core protocol specification</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Next Steps -->
+    <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-lg p-6">
+      <h3 class="text-lg font-semibold mb-3 text-cyan-400">Related Documentation</h3>
+      <div class="flex flex-wrap gap-3">
+        <a href="/docs/coordinates" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm text-cyan-400 transition-colors">
+          Coordinate System →
+        </a>
+        <a href="/docs/cantor" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm text-cyan-400 transition-colors">
+          Cantor Pairing →
+        </a>
+        <a href="/docs/hyperspace" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm text-cyan-400 transition-colors">
+          Hyperspace →
+        </a>
+      </div>
+    </div>
+  </div>
+</DocsLayout>

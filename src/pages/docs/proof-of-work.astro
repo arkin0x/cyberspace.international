@@ -1,0 +1,393 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Proof-of-Work Mechanics" description="The three types of traversal proofs in Cyberspace: Cantor hop, Merkle sidestep, and Hyperspace traversal">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      Proof-of-Work Mechanics
+    </h1>
+    
+    <p class="text-lg text-slate-300 mb-8">
+      Cyberspace has three distinct proof-of-work mechanisms, each designed for 
+      different scales of traversal. Understanding when to use each is essential 
+      for efficient navigation.
+    </p>
+
+    <!-- The Three Proof Types -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">The Three Proof Types</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Movement in cyberspace requires computational work, but the type of work 
+        depends on the distance and nature of traversal:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-cyan-400 mb-3">1. Cantor Root (Hop)</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            <strong>Use:</strong> Standard movement within a sector
+          </p>
+          <p class="text-slate-400 text-xs mb-2">
+            Height 0-33 (feasible range)
+          </p>
+          <p class="text-slate-400 text-xs">
+            Time: Milliseconds to 15 minutes
+          </p>
+          <p class="text-slate-400 text-xs mt-2">
+            Cost: $0.0001 to $0.09
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-purple-400 mb-3">2. Merkle Root (Sidestep)</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            <strong>Use:</strong> Crossing infeasible LCA boundaries
+          </p>
+          <p class="text-slate-400 text-xs mb-2">
+            Height 35-40+ (storage-infeasible)
+          </p>
+          <p class="text-slate-400 text-xs">
+            Time: Hours to days (streaming)
+          </p>
+          <p class="text-slate-400 text-xs mt-2">
+            Cost: $10-100 (cloud batch)
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-green-400 mb-3">3. Hyperspace Traversal</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            <strong>Use:</strong> Long-distance travel via Bitcoin blocks
+          </p>
+          <p class="text-slate-400 text-xs mb-2">
+            Entry: Height approximately 33
+          </p>
+          <p class="text-slate-400 text-xs">
+            Travel: ~200ns per block
+          </p>
+          <p class="text-slate-400 text-xs mt-2">
+            Cost: Negligible per jump
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-cyan-500/10 border border-cyan-500/30 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-cyan-400">Why Three Mechanisms?</h3>
+        <p class="text-slate-300">
+          Cantor proofs provide structured work with spatial meaning but become 
+          infeasible at great distances. Merkle proofs handle any distance but 
+          require streaming computation. Hyperspace leverages Bitcoin's existing 
+          proof-of-work for long-distance travel. Each serves a different scale 
+          of the topography.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cantor Proofs: The Default -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Cantor Proofs: Standard Movement</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Cantor pairing trees are the default proof mechanism for cyberspace traversal. 
+        They compute the actual mathematical fabric connecting two coordinates.
+      </p>
+
+      <h3 class="text-xl font-semibold text-cyan-400 mb-3 mt-6">The Temporal Axis</h3>
+      <p class="text-slate-300 mb-4">
+        Every Cantor proof begins with a <strong>temporal seed</strong> derived from 
+        the previous movement event. This is critical:
+      </p>
+
+      <ul class="text-slate-300 space-y-3 mb-6">
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-3 mt-1">▸</span>
+          <span>The temporal seed is computed from the previous event ID</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-3 mt-1">▸</span>
+          <span>The seed is not known until the previous hop completes</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-3 mt-1">▸</span>
+          <span>This prevents precomputation and replay attacks</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-cyan-400 mr-3 mt-1">▸</span>
+          <span>Every hop costs fresh work, maintaining thermodynamic continuity</span>
+        </li>
+      </ul>
+
+      <details class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 mb-6 cursor-pointer">
+        <summary class="text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+          Show: Temporal seed computation
+        </summary>
+        <pre class="mt-4 bg-slate-950 border border-slate-700 rounded-lg p-4 overflow-x-auto text-xs font-mono text-slate-300">
+def compute_temporal_seed(prev_event_id: bytes) -> int:
+    """Derive temporal seed from previous movement event."""
+    return int.from_bytes(
+        sha256(prev_event_id), 
+        "big"
+    ) % (2**256)
+
+# The seed becomes the first leaf in the Cantor tree
+# This binds the proof to this specific position in the chain</pre>
+      </details>
+
+      <h3 class="text-xl font-semibold text-cyan-400 mb-3 mt-6">Hop Action Details</h3>
+      <p class="text-slate-300 mb-4">
+        The <strong>hop</strong> action (kind 3333, A=hop) is used for local movement 
+        within a sector:
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 mb-6">
+        <h4 class="font-semibold text-cyan-400 mb-3">Per-Axis Trees</h4>
+        <p class="text-slate-300 text-sm mb-3">
+          Movement proofs are computed independently for each axis (X, Y, Z), then 
+          combined. This preserves axis symmetry:
+        </p>
+        <ol class="text-slate-300 text-sm space-y-2 list-decimal list-inside">
+          <li>Compute Cantor tree for X axis traversal</li>
+          <li>Compute Cantor tree for Y axis traversal</li>
+          <li>Compute Cantor tree for Z axis traversal</li>
+          <li>Combine three axis roots with temporal seed</li>
+          <li>Final root is the proof published in Nostr event</li>
+        </ol>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-cyan-400 mb-2">LCA Height</h4>
+          <p class="text-slate-400 text-sm">Determined by coordinate distance</p>
+          <p class="text-slate-400 text-xs mt-2">Typical: 0 to 25 within sector</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-cyan-400 mb-2">Compute Time</h4>
+          <p class="text-slate-400 text-sm">Milliseconds to seconds</p>
+          <p class="text-slate-400 text-xs mt-2">Consumer hardware</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-cyan-400 mb-2">Proof Size</h4>
+          <p class="text-slate-400 text-sm">Single 256-bit integer</p>
+          <p class="text-slate-400 text-xs mt-2">Fits in Nostr tag</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Merkle Proofs: Sidestepping Boundaries -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-purple-400 mb-4">Merkle Proofs: Sidestepping</h2>
+      
+      <p class="text-slate-300 mb-4">
+        When LCA height exceeds approximately 33, Cantor proofs become storage-infeasible. 
+        The <strong>sidestep</strong> action uses Merkle proofs to cross these boundaries.
+      </p>
+
+      <div class="bg-purple-500/10 border border-purple-500/30 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-purple-400">When to Sidestep</h3>
+        <p class="text-slate-300 mb-3">
+          Sidestep is used when:
+        </p>
+        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+          <li>Crossing major sector boundaries (height 35+)</li>
+          <li>Traveling between distant regions without Hyperspace access</li>
+          <li>The direct Cantor proof would require more memory than available</li>
+        </ul>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        Merkle proofs work by streaming the tree computation. Instead of storing 
+        the entire Cantor tree (which would be terabytes for height 40), the proof 
+        is generated and verified incrementally.
+      </p>
+
+      <details class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 mb-6 cursor-pointer">
+        <summary class="text-purple-400 font-semibold hover:text-purple-300 transition-colors">
+          Show: Merkle vs Cantor comparison
+        </summary>
+        <div class="mt-4 text-sm text-slate-300">
+          <table class="w-full">
+            <thead class="text-xs uppercase bg-slate-950 text-purple-400">
+              <tr>
+                <th class="px-3 py-2 text-left">Property</th>
+                <th class="px-3 py-2 text-left">Cantor</th>
+                <th class="px-3 py-2 text-left">Merkle</th>
+              </tr>
+            </thead>
+            <tbody class="text-slate-300">
+              <tr class="border-b border-slate-800">
+                <td class="px-3 py-2">Max Height</td>
+                <td class="px-3 py-2">~33 (feasible)</td>
+                <td class="px-3 py-2">Any (streaming)</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="px-3 py-2">Memory</td>
+                <td class="px-3 py-2">Kilobytes</td>
+                <td class="px-3 py-2">Streaming (minimal)</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="px-3 py-2">Time</td>
+                <td class="px-3 py-2">Milliseconds to minutes</td>
+                <td class="px-3 py-2">Hours to days</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-2">Use Case</td>
+                <td class="px-3 py-2">Standard movement</td>
+                <td class="px-3 py-2">Boundary crossing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h4 class="font-semibold text-purple-400 mb-2">Action Type</h4>
+          <p class="text-slate-400 text-sm">kind 3333, A=sidestep</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-5">
+          <h4 class="font-semibold text-purple-400 mb-2">Proof Type</h4>
+          <p class="text-slate-400 text-sm">Merkle root of path</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hyperspace Proofs: The Transit Network -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-green-400 mb-4">Hyperspace Proofs</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Hyperspace traversal uses a specialized form of Cantor proof optimized for 
+        traveling along the Bitcoin block chain. This mechanism is covered in depth 
+        in the Hyperspace documentation, but the key points are:
+      </p>
+
+      <div class="bg-green-500/10 border border-green-500/30 p-6 rounded-lg mb-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-green-400">Two-Phase Process</h3>
+        <ol class="text-slate-300 text-sm space-y-3 list-decimal list-inside">
+          <li><strong>Entry:</strong> Publish <code>enter-hyperspace</code> action (kind 3333, A=enter-hyperspace) with Cantor proof to reach sector plane (height approximately 33)</li>
+          <li><strong>Traversal:</strong> Publish <code>hyperjump</code> actions (kind 3333, A=hyperjump) with incremental Cantor tree over block heights</li>
+        </ol>
+      </div>
+
+      <p class="text-slate-300 mb-4">
+        The hyperspace proof is unique because it encodes a <strong>temporal path</strong> 
+        (block heights in order) rather than a spatial path (coordinates in order). 
+        The temporal leaf derived from the previous event prevents replay and ensures 
+        fresh work for each jump.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-green-400 mb-2">Entry Cost</h4>
+          <p class="text-slate-400 text-sm">Height approximately 33</p>
+          <p class="text-slate-400 text-xs mt-1">15 minutes, $0.09</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-green-400 mb-2">Travel Speed</h4>
+          <p class="text-slate-400 text-sm">~200ns per block</p>
+          <p class="text-slate-400 text-xs mt-1">Negligible cost</p>
+        </div>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+          <h4 class="font-semibold text-green-400 mb-2">Best For</h4>
+          <p class="text-slate-400 text-sm">Long-distance travel</p>
+          <p class="text-slate-400 text-xs mt-1">Cross-cliff traversal</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Type Summary -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Summary: All Actions Use Kind 3333</h2>
+      
+      <p class="text-slate-300 mb-4">
+        Every Cyberspace movement action uses Nostr event kind 3333. The action type 
+        is specified in the <strong>A tag</strong>:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs uppercase bg-slate-800 text-cyan-400">
+            <tr>
+              <th class="px-4 py-3">Action</th>
+              <th class="px-4 py-3">A Tag</th>
+              <th class="px-4 py-3">Proof Type</th>
+              <th class="px-4 py-3">Use Case</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-300">
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Hop</td>
+              <td class="px-4 py-3 font-mono text-cyan-400">hop</td>
+              <td class="px-4 py-3">Cantor tree</td>
+              <td class="px-4 py-3">Local movement (within sector)</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Sidestep</td>
+              <td class="px-4 py-3 font-mono text-purple-400">sidestep</td>
+              <td class="px-4 py-3">Merkle tree</td>
+              <td class="px-4 py-3">Cross infeasible boundaries</td>
+            </tr>
+            <tr class="border-b border-slate-700">
+              <td class="px-4 py-3 font-medium">Enter Hyperspace</td>
+              <td class="px-4 py-3 font-mono text-green-400">enter-hyperspace</td>
+              <td class="px-4 py-3">Cantor to plane</td>
+              <td class="px-4 py-3">Board Hyperspace network</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium">Hyperjump</td>
+              <td class="px-4 py-3 font-mono text-green-400">hyperjump</td>
+              <td class="px-4 py-3">Cantor over path</td>
+              <td class="px-4 py-3">Travel between Hyperjumps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-yellow-500/10 border border-yellow-500/30 p-6 rounded-lg mt-6">
+        <h3 class="text-lg font-semibold mb-2 mt-0 text-yellow-400">Critical Protocol Pattern</h3>
+        <p class="text-slate-300 text-sm">
+          All actions use kind 3333, differentiated by the A tag. This is a critical 
+          protocol pattern that ensures all movement is validated uniformly by relays 
+          and enables future extensions without requiring new kind numbers.
+        </p>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-cyan-400 mb-4">Next Steps</h2>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="/docs/topography.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Topography of Cyberspace</h3>
+          <p class="text-slate-400 text-sm">
+            Understand LCA boundaries and natural regions.
+          </p>
+        </a>
+
+        <a href="/docs/hyperspace.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Hyperspace Network</h3>
+          <p class="text-slate-400 text-sm">
+            Learn about Hyperspace entry and traversal.
+          </p>
+        </a>
+
+        <a href="/docs/cantor.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">→ Cantor Pairing</h3>
+          <p class="text-slate-400 text-sm">
+            Understand the mathematical foundation.
+          </p>
+        </a>
+
+        <a href="/docs/coordinates.html" class="bg-slate-800/50 border border-slate-700 hover:border-cyan-500 rounded-lg p-5 transition-colors group">
+          <h3 class="text-lg font-semibold text-cyan-400 group-hover:text-cyan-300 mb-2">← Coordinate System</h3>
+          <p class="text-slate-400 text-sm">
+            Review the 256-bit interleaved coordinate structure.
+          </p>
+        </a>
+      </div>
+    </section>
+  </div>
+</DocsLayout>

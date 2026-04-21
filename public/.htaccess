@@ -1,0 +1,22 @@
+# Enable DirectoryIndex for clean URLs
+DirectoryIndex index.html index.htm
+
+# RewriteEngine rules for clean URLs (optional, if mod_rewrite is available)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Add .html extension if file exists
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# Disable MultiViews to prevent content negotiation issues
+Options -MultiViews
+
+# Ensure proper MIME types
+AddType text/html .html
+AddType text/css .css
+AddType application/javascript .js
+AddType image/svg+xml .svg
+AddType application/xml .xml
