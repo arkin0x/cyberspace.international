@@ -85,8 +85,9 @@ import Layout from '../layouts/DocsLayout.astro';
         </li>
         <li>
           <strong>Rules without rulers:</strong> The protocol enforces validity through 
-          cryptographic verification, not administrative decree. Invalid proofs are 
-          rejected by every node automatically.
+          cryptographic verification on the client side. Invalid proofs simply fail to 
+          grant cryptographic access to the claimed coordinate or action. There is no 
+          network to reject you. The mathematics itself is the gatekeeper.
         </li>
         <li>
           <strong>Thermodynamic enforcement:</strong> The cost is real energy, expended 
@@ -283,26 +284,15 @@ import Layout from '../layouts/DocsLayout.astro';
       </div>
       
       <div class="mt-8 p-6 bg-slate-900/50 rounded-lg border border-slate-800">
-        <h3 class="text-xl font-semibold mb-4 text-cyan-400">Clients and Implementations</h3>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <h4 class="font-semibold mb-2">ONOSENDAI (Reference Client)</h4>
-            <p class="text-sm text-slate-400 mb-2">
-              The first Cyberspace client for visualizing and navigating the protocol.
-            </p>
-            <a href="https://github.com/arkin0x/ONOSENDAI" class="text-cyan-400 hover:text-cyan-300 text-sm">
-              View on GitHub →
-            </a>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-2">cyberspace-cli</h4>
-            <p class="text-sm text-slate-400 mb-2">
-              Command-line tools for movement, encryption, and proof computation.
-            </p>
-            <a href="https://github.com/arkin0x/cyberspace-cli" class="text-cyan-400 hover:text-cyan-300 text-sm">
-              View on GitHub →
-            </a>
-          </div>
+        <h3 class="text-xl font-semibold mb-4 text-cyan-400">Implementations</h3>
+        <div>
+          <h4 class="font-semibold mb-2">cyberspace-cli</h4>
+          <p class="text-sm text-slate-400 mb-2">
+            Command-line tools for movement, encryption, and proof computation.
+          </p>
+          <a href="https://github.com/arkin0x/cyberspace-cli" class="text-cyan-400 hover:text-cyan-300 text-sm">
+            View on GitHub →
+          </a>
         </div>
       </div>
     </section>
